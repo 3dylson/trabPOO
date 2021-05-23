@@ -4,7 +4,9 @@ Servico::Servico(const int id, const string& data, const float custo)
 	: id(id),
 	data(data),
 	custo(custo)
-{}
+{
+	set_custo(0.0);
+}
 
 int Servico::get_id() const
 {
