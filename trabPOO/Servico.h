@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include <string>
 
 using namespace std;
@@ -8,7 +9,7 @@ class Servico
 protected:
 	int id;
 	string data;
-	float custo;
+	float custo; //mudar no diagrama
 
 public:
 

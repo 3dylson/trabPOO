@@ -19,6 +19,6 @@ public:
 
 	void set_custo(float custo);
 
-
+	void atribuir_consulta(Consulta* c);
 	
 };
