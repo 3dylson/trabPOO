@@ -7,6 +7,7 @@
 class Consultorio
 {
 	string nome;
+	float valor_total_faturado;
 	Colecao<Paciente> pacientes;
 	Colecao<Servico> servicos;
 public:
@@ -23,7 +24,9 @@ public:
 
 	bool atribuir_exame(int id_p, int id_e, string data, float custo, Tipologia t, int id_c); // mudar p bool no diagrama
 
-	float valor_faturacao(); //double ou float??
+	float get_valor_total_faturado() const;
+
+	void set_valor_total_faturado(float valor_total_faturado);
 
 	void print_consultas_paciente(int id_p);
 };
