@@ -14,11 +14,17 @@ class Exame : public Servico
 
 public:
 
+	Exame();
+
 	Exame(int id, const string& data, float custo, Tipologia tipo);
 
+	Tipologia get_tipo() const;
 
-	void set_custo(float custo);
+	void set_tipo(Tipologia tipo);
 
-	void atribuir_consulta(Consulta* c);
-	
+	Consulta* get_consulta() const;
+
+	void set_consulta(Consulta* c);
+
+	void print() const;
 };

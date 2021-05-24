@@ -3,15 +3,13 @@
 #include<set>
 using namespace std;
 
-
-
 template<class K>
 class Colecao : public set<K> {
 public:
-	bool insert(const K &c);
-	K *find(const K &c) const;
+	bool insert(const K& c);
+	K* find(const K& c) const;
 	int size() const;
-	void erase(const K &);
+	void erase(const K&);
 	//void clear();
 	//bool empty() const;
 	//iterator begin();
@@ -19,16 +17,16 @@ public:
 };
 
 template<class K>
-bool Colecao<K>::insert(const K &c)
+bool Colecao<K>::insert(const K& c)
 {
 	pair<set<K>::iterator, bool> r = set<K>::insert(c);
 	return(r.second);
 }
 
 template<class K>
-K *Colecao<K>::find(const K &c) const
+K* Colecao<K>::find(const K& c) const
 {
-	K *r = 0;
+	K* r = 0;
 	typename set<K>::iterator i = set<K>::find(c);
 	if (i != set<K>::end())
 		r = const_cast<K*>(i.operator->());
@@ -41,6 +39,6 @@ int Colecao<K>::size() const {
 }
 
 template<class K>
-void Colecao<K>::erase(const K &c) {
+void Colecao<K>::erase(const K& c) {
 	set<K>::erase(c);
 }

@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "Paciente.h"
+
 using namespace std;
 
 class Servico
@@ -23,4 +25,10 @@ public:
 	float get_custo() const;
 	void set_custo(float custo);
 
+	void add_paciente(Paciente* paciente, Consulta* consulta);
+
+	void print() const;
+
+	//::Servico& operator=(Consulta* consulta);
+	//operator Consulta();
 };

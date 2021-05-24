@@ -1,25 +1,56 @@
 ﻿#include "Consultorio.h"
 
+Consultorio::Consultorio(string n) : nome(n)
+{}
 
-Consultorio::Consultorio(string n) : nome(n) {}
-
-bool Consultorio::add_paciente(string n, int id) {
+bool Consultorio::add_paciente(string n, int id)
+{
 	Paciente p(n, id);
 	return pacientes.insert(p);
 }
-bool Consultorio::add_consulta(int id, string data, float custo, string diagnostico) {
-	Consulta c(id, data, custo, diagnostico);
-	return servicos.insert(c); // ??
+
+Paciente* Consultorio::find_paciente(int id)
+{
+	Paciente p("", id);
+	return pacientes.find(p);
 }
 
-bool Consultorio::atribuir_consulta(int id_c, int id_p) {
-	Consulta c(id_c);
-	servicos.find(Consulta* c);
-
+bool Consultorio::add_consulta(int id, string data, float custo)
+{
+	Servico s(id, data, custo);
+	//s = new Consulta(s.get_id(), s.get_data(), s.get_custo(), d);
+	//Consulta c(id, data, custo, d);
+	return servicos.insert(s);
 }
-bool atribuir_exame(int id_e, string data, float custo, int id_c, Tipologia tp) {
-	Exame ex(id_e, data, custo, tp);
-	ex
-}// mudar p bool no diagrama
-float valor_faturacao(); //double ou float??
-void print_consultas_paciente(int id_p);
+
+Servico* Consultorio::find_servico(int id)
+{
+	Servico s(id, "", 0.0);
+	return servicos.find(s);
+}
+
+bool Consultorio::atribuir_consulta(int id_c, int id_p, const string& d)
+{
+	Paciente* p = find_paciente(id_p);
+	if (p != NULL)
+	{
+		Servico* s = find_servico(id_c);
+		if (s != NULL)
+		{
+			//Consulta c(s->get_id(), s->get_data(), s->get_custo(), d);
+			p->add_consulta(s->get_id(), s->get_data(), s->get_custo(), d);
+		}
+	}
+}
+
+bool Consultorio::atribuir_exame(int id_e, string data, float custo, int id_c)
+{
+}
+
+float Consultorio::valor_faturacao()
+{
+}
+
+void Consultorio::print_consultas_paciente(int id_p)
+{
+}

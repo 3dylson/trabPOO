@@ -4,7 +4,6 @@
 #include "Exame.h"
 #include "Servico.h"
 
-
 using namespace std;
 class Paciente;
 
@@ -13,12 +12,24 @@ class Consulta : public Servico
 	string diagonostico;
 	Paciente* paciente;
 	Colecao<Exame> exames;
-	
+
 public:
+
+	Consulta();
 
 	Consulta(int id, const string& data, float custo, const string& diagonostico);
 
-	void add_exame(int id, string data, float custo, Tipologia tipo);
+	Consulta(int id, const string& data, float custo);
 
-	void atribuir_paciente(Paciente* p);
+	string get_diagonostico() const;
+
+	void set_diagonostico(const string& diagonostico);
+
+	Paciente* get_paciente() const;
+
+	void set_paciente(Paciente* paciente);
+
+	bool add_exame(int id, const string& data, float custo, Tipologia tipo);
+
+	Exame* find_exame(int id);
 };

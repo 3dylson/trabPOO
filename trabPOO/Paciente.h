@@ -9,7 +9,18 @@ class Paciente
 	int id;
 	Colecao<Consulta> consultas;
 public:
-	Paciente(string n, int id);
-	void add_consulta(int id, string data, float custo, string diagnostico);
-	void print();
+
+	Paciente(const string& nome, int id);
+
+	string get_nome() const;
+
+	void set_nome(const string& nome);
+
+	int get_id() const;
+
+	void set_id(int id);
+
+	bool add_consulta(int id, const string& data, float custo, const string& diagonostico);
+
+	Consulta* find_consulta(int id);
 };
