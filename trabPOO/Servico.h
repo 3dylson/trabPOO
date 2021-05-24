@@ -25,7 +25,7 @@ public:
 	float get_custo() const;
 	void set_custo(float custo);
 
-	void add_paciente(Paciente* paciente, Consulta* consulta);
+	//void add_paciente(Paciente* paciente, Consulta* consulta);
 
 	void print() const;
 

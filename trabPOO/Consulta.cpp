@@ -40,9 +40,13 @@ void Consulta::set_paciente(Paciente* paciente)
 
 bool Consulta::add_exame(int id, const string& data, float custo, Tipologia tipo)
 {
-	Exame e(id, data, custo, tipo);
-	e.set_consulta(this);
-	return exames.insert(e);
+	Exame* e0 = find_exame(id);
+	if (e0 = NULL)
+	{
+		Exame e(id, data, custo, tipo);
+		e.set_consulta(this);
+		return exames.insert(e);
+	}
 }
 
 Exame* Consulta::find_exame(int id)
