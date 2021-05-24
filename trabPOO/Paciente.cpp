@@ -1,5 +1,7 @@
 ﻿#include "Paciente.h"
 
+#include <iostream>
+
 Paciente::Paciente(const string& nome, int id)
 	: nome(nome),
 	id(id)
@@ -28,8 +30,14 @@ void Paciente::set_id(int id)
 
 bool Paciente::add_consulta(int id, const string& data, float custo, const string& diagonostico)
 {
+	Consulta* c0 = find_consulta(id);
+	if (c0 != NULL)
+	{
+		cout << "A consulta: " << id << " ja existe" << endl;
+	}
 	Consulta c(id, data, custo, diagonostico);
 	c.set_paciente(this);
+	cout << "Consulta: " << id << "registada para o paciente: " << this->get_id() << endl;
 	return consultas.insert(c);
 }
 

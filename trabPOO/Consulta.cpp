@@ -1,5 +1,7 @@
 ﻿#include "Consulta.h"
 
+#include <iostream>
+
 Consulta::Consulta() : Servico(NULL, NULL, NULL)
 {
 	paciente = NULL;
@@ -45,8 +47,10 @@ bool Consulta::add_exame(int id, const string& data, float custo, Tipologia tipo
 	{
 		Exame e(id, data, custo, tipo);
 		e.set_consulta(this);
+		cout << "Exame: " << id << " adicionado a consulta: " << this->get_id() << endl;
 		return exames.insert(e);
 	}
+	cout << "O exame: " << id << " já existe na consulta: " << this->get_id() << endl;
 }
 
 Exame* Consulta::find_exame(int id)
