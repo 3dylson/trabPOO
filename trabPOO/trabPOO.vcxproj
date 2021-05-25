@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Colecao.h" />
+    <ClInclude Include="ColecaoHibrida.h" />
     <ClInclude Include="Consulta.h" />
     <ClInclude Include="Consultorio.h" />
     <ClInclude Include="Exame.h" />

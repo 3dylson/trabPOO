@@ -53,5 +53,8 @@
     <ClInclude Include="Servico.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColecaoHibrida.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

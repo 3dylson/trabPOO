@@ -91,7 +91,7 @@ void Consultorio::set_valor_total_faturado(float valor_total_faturado)
 
 void Consultorio::print_valor_total() const
 {
-	cout << "Valor total faturado pelo consultorio: " << this->get_nome() << "= " << this->get_valor_total_faturado() << endl;
+	cout << "Valor total faturado pelo consultorio: " << this->get_nome() << " = " << this->get_valor_total_faturado() << endl;
 }
 
 void Consultorio::print_consultas_paciente(int id_p)
