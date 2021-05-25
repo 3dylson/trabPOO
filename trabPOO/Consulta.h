@@ -32,4 +32,6 @@ public:
 	bool add_exame(int id, const string& data, float custo, Tipologia tipo);
 
 	Exame* find_exame(int id);
+
+	void print() const;
 };

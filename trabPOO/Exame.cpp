@@ -46,5 +46,5 @@ void Exame::set_consulta(Consulta* c) {
 void Exame::print() const
 {
 	Servico::print();
-	cout << this->get_tipo() << endl;
+	cout << "Tipo: " << this->get_tipo() << endl;
 }

@@ -25,4 +25,6 @@ public:
 	bool add_consulta(int id, const string& data, float custo, const string& diagonostico);
 
 	Consulta* find_consulta(int id);
+
+	Colecao<Consulta> get_consultas() const;
 };

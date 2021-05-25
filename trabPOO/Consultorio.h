@@ -30,7 +30,7 @@ public:
 
 	void set_valor_total_faturado(float valor_total_faturado);
 
-	void print_valor_total();
+	void print_valor_total() const;
 
 	void print_consultas_paciente(int id_p);
 };

@@ -89,11 +89,21 @@ void Consultorio::set_valor_total_faturado(float valor_total_faturado)
 	this->valor_total_faturado = valor_total_faturado;
 }
 
-void Consultorio::print_valor_total()
+void Consultorio::print_valor_total() const
 {
 	cout << "Valor total faturado pelo consultorio: " << this->get_nome() << "= " << this->get_valor_total_faturado() << endl;
 }
 
 void Consultorio::print_consultas_paciente(int id_p)
 {
+	Paciente* p = find_paciente(id_p);
+	if (p == NULL)
+	{
+		cout << "Paciente: " << id_p << "nao existe!" << endl;
+	}
+
+	Colecao<Consulta> copia_consultas = p->get_consultas();
+
+	Colecao<Consulta>::iterator i;
+	for (i = copia_consultas.begin(); i != copia_consultas.end(); i++) (*i).print();
 }

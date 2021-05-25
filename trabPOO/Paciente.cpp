@@ -52,3 +52,8 @@ Consulta* Paciente::find_consulta(int id)
 	c.set_id(id);
 	return consultas.find(c);
 }
+
+Colecao<Consulta> Paciente::get_consultas() const
+{
+	return consultas;
+}

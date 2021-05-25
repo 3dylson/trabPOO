@@ -68,3 +68,11 @@ Exame* Consulta::find_exame(int id)
 	e.set_id(id);
 	return exames.find(e);
 }
+
+void Consulta::print() const
+{
+	Servico::print();
+	cout << "Diagonostico: " << this->get_diagonostico() << endl;
+	Colecao<Exame>::iterator i;
+	for (i = exames.begin(); i != exames.end(); i++) (*i).print();
+}
