@@ -30,30 +30,29 @@ Paciente* Consultorio::find_paciente(int id)
 	return pacientes.find(p);
 }
 
-Servico* Consultorio::find_servico(int id)
+Servico* Consultorio::find_servico(const int& id)
 {
 	Servico s(id, "", 0.0);
-	return servicos.find(s);
+	return servicos.find(&s);
 }
 
-bool Consultorio::atribuir_consulta(int id_c, string data, float custo, const string& d, int id_p)
+bool Consultorio::atribuir_consulta(int id_c, string data, float custo, const string d, int id_p)
 {
 	Paciente* p = find_paciente(id_p);
 	if (p != NULL)
 	{
 		Servico* s = find_servico(id_c);
-		if (s == NULL)
+		if (!s)
 		{
-			Servico s2(id_c, data, custo);
-			//Consulta c(s->get_id(), s->get_data(), s->get_custo(), d);
-			p->add_consulta(s2.get_id(), s2.get_data(), s2.get_custo(), d);
-			float total = this->get_valor_total_faturado() + s2.get_custo();
+			p->add_consulta(id_c, data, custo, d);
+			Consulta* cp = p->find_consulta(id_c);
+			float total = this->get_valor_total_faturado() + cp->get_custo();
 			set_valor_total_faturado(total);
-			cout << "Consulta: " << s2.get_id() << " foi registada e atribuida ao paciente: " << p->get_id() << endl;
-			return servicos.insert(s2);
+			cout << "Consulta: " << id_c << " foi registada e atribuida ao paciente: " << p->get_id() << endl;
+			return servicos.insert(cp);
 		}
 
-		cout << "A consulta: " << s->get_id() << " ja esta atribuida!" << endl;
+		cout << "A consulta: " << id_c << " ja esta atribuida!" << endl;
 	}
 
 	cout << "O paciente: " << id_p << " nao existe!" << endl;
@@ -68,10 +67,11 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 		if (c != NULL)
 		{
 			c->add_exame(id_e, data, custo, t);
+			Exame* ec = c->find_exame(id_e);
 			float total = this->get_valor_total_faturado() + custo;
 			set_valor_total_faturado(total);
 			cout << "Exame: " << id_e << " adicionado a consulta: " << c->get_id() << endl;
-			return NULL; // TODO return servicos add exame
+			return servicos.insert(ec);
 		}
 
 		cout << "A consulta: " << id_c << " nao existe!" << endl;

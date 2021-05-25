@@ -10,7 +10,7 @@ class Consultorio
 	string nome;
 	float valor_total_faturado;
 	Colecao<Paciente> pacientes;
-	ColecaoHibrida<Servico*> servicos; // TODO implement ColecaoHibrida
+	ColecaoHibrida<Servico*> servicos;
 public:
 
 	Consultorio(string n);
@@ -21,9 +21,9 @@ public:
 
 	Paciente* find_paciente(int id);
 
-	Servico* find_servico(int id);
+	Servico* find_servico(const int& id);
 
-	bool atribuir_consulta(int id_c, string data, float custo, const string& d, int id_p);
+	bool atribuir_consulta(int id_c, string data, float custo, const string d, int id_p);
 
 	bool atribuir_exame(int id_p, int id_e, string data, float custo, Tipologia t, int id_c);
 

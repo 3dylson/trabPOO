@@ -10,4 +10,5 @@ int main()
 	xpto.add_paciente("Teste", 1);
 	xpto.atribuir_consulta(1, "01/02/21", 19.99, "lorem", 2);
 	xpto.print_valor_total();
+	//xpto.atribuir_consulta(1, "01/02/21", 19.99, "lorem", 1);
 }
