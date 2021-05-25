@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "Paciente.h"
+
 Consulta::Consulta() : Servico(NULL, NULL, NULL)
 {
 	paciente = NULL;
@@ -37,13 +39,20 @@ Paciente* Consulta::get_paciente() const
 
 void Consulta::set_paciente(Paciente* paciente)
 {
-	this->paciente = paciente;
+	if (paciente == NULL)
+	{
+		this->paciente = paciente;
+		cout << this->paciente->get_nome() << " registado a consulta: " << this->get_id() << endl;
+	}
+
+	Paciente* p = this->get_paciente();
+	cout << "Consulta: " << this->get_id() << "ja se encontra atribuida ao paciente: " << p->get_nome() << "-" << p->get_id() << endl;
 }
 
 bool Consulta::add_exame(int id, const string& data, float custo, Tipologia tipo)
 {
 	Exame* e0 = find_exame(id);
-	if (e0 = NULL)
+	if (e0 == NULL)
 	{
 		Exame e(id, data, custo, tipo);
 		e.set_consulta(this);
