@@ -9,7 +9,7 @@ class Consultorio
 	string nome;
 	float valor_total_faturado;
 	Colecao<Paciente> pacientes;
-	Colecao<Servico> servicos;
+	Colecao<Servico> servicos; // TODO implement ColecaoHibrida
 public:
 
 	Consultorio(string n);

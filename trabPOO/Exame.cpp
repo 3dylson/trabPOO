@@ -39,6 +39,12 @@ void Exame::set_consulta(Consulta* c) {
 		cout << "Exame: " << this->get_id() << "- " << this->get_tipo() << " adicionado a consulta: " << c->get_id() << endl;
 	}
 
-	Consulta* c = this->get_consulta();
-	cout << "Exame: " << this->get_id() << "ja se encontra atribuida a consulta: " << c->get_id() << endl;
+	Consulta* c1 = this->get_consulta();
+	cout << "Exame: " << this->get_id() << "ja se encontra atribuida a consulta: " << c1->get_id() << endl;
+}
+
+void Exame::print() const
+{
+	Servico::print();
+	cout << this->get_tipo() << endl;
 }

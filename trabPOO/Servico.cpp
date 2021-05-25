@@ -52,7 +52,7 @@ void Servico::set_custo(float custo)
 
 void Servico::print() const
 {
-	cout << "ID : " << get_id() << "Data : " << get_data << "Custo: " << get_custo << endl;
+	cout << "ID : " << this->get_id() << "Data : " << this->get_data() << "Custo: " << this->get_custo() << endl;
 }
 
 //Servico::operator Consulta()

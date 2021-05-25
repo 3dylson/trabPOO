@@ -15,7 +15,7 @@ string Consultorio::get_nome() const
 bool Consultorio::add_paciente(string n, int id)
 {
 	Paciente* p0 = find_paciente(id);
-	if (p0 = NULL)
+	if (p0 == NULL)
 	{
 		Paciente p(n, id);
 		cout << "Paciente " << p.get_nome() << " adicionado." << endl;
@@ -42,7 +42,7 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, const st
 	if (p != NULL)
 	{
 		Servico* s = find_servico(id_c);
-		if (s = NULL)
+		if (s == NULL)
 		{
 			Servico s2(id_c, data, custo);
 			//Consulta c(s->get_id(), s->get_data(), s->get_custo(), d);
@@ -71,6 +71,7 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 			float total = this->get_valor_total_faturado() + custo;
 			set_valor_total_faturado(total);
 			cout << "Exame: " << id_e << " adicionado a consulta: " << c->get_id() << endl;
+			return NULL; // TODO return servicos add exame
 		}
 
 		cout << "A consulta: " << id_c << " nao existe!" << endl;
