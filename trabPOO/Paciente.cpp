@@ -8,6 +8,11 @@ Paciente::Paciente(const string& nome, int id)
 {
 }
 
+bool Paciente::operator<(const Paciente& p) const
+{
+	return id < p.get_id();
+}
+
 string Paciente::get_nome() const
 {
 	return nome;

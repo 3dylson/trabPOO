@@ -32,6 +32,5 @@ public:
 
 	void print_valor_total();
 
-	// TODO implement this with operator
 	void print_consultas_paciente(int id_p);
 };

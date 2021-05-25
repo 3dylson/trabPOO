@@ -12,6 +12,8 @@ public:
 
 	Paciente(const string& nome, int id);
 
+	bool operator<(const Paciente& p) const;
+
 	string get_nome() const;
 
 	void set_nome(const string& nome);

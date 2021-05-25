@@ -15,6 +15,8 @@ public:
 
 	Servico(const int id, const string& data, const float custo);
 
+	virtual bool operator<(const Servico& s) const;
+
 	//Getters e Setters
 	int get_id() const;
 
@@ -28,7 +30,7 @@ public:
 
 	void set_custo(float custo);
 
-	void print() const;
+	virtual void print() const;
 
 	//void add_paciente(Paciente* paciente, Consulta* consulta);
 	//::Servico& operator=(Consulta* consulta);

@@ -10,6 +10,11 @@ Servico::Servico(const int id, const string& data, const float custo)
 	set_custo(0.0);
 }
 
+bool Servico::operator<(const Servico& s) const
+{
+	return id < s.get_id();
+}
+
 int Servico::get_id() const
 {
 	return id;
