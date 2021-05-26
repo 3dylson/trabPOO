@@ -23,7 +23,7 @@ bool Consultorio::add_paciente(string n, int id)
 		cout << "Paciente " << p.get_nome() << " adicionado." << endl;
 		return pacientes.insert(p);
 	}
-	cout << "Paciente: " << p0->get_id() << " já existe!" << endl;
+	cout << "Paciente: " << p0->get_id() << " já existe!" << endl;  //nao devia ter um return ??
 }
 
 Paciente* Consultorio::find_paciente(int id)
@@ -114,25 +114,8 @@ bool Consultorio::remover_servico(int id) {
 	}
 }
 
-/*bool Consultorio::add_consulta(int id_c, string data, float custo, int id_p) {
-	Consulta* c0 = find_consulta(id_c);
-	if (c0 == NULL)
-	{
-		Consulta c(id_c, data, custo);
-		c.set_consultorio(this);
-		cout << "Consulta: " << id_c << " adicionado ao consultorio: " << this->get_nome() << endl;
-		return exames.insert(e);
-	}
-	cout << "O exame: " << id << " já existe na consulta: " << this->get_id() << endl;
-}
+//print_pacientes ???
 
-Consulta* Consultorio::find_consulta(int id)
-{
-	Consulta c;
-	c.set_id(id);
-	return consultas.find(c);
-}
-*/
 float Consultorio::get_valor_total_faturado() const
 {
 	return valor_total_faturado;
