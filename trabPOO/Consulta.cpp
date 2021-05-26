@@ -9,11 +9,11 @@ Consulta::Consulta() : Servico(NULL, NULL, NULL)
 	paciente = NULL;
 }
 
-Consulta::Consulta(int id, const string& data, float custo, const string& diagonostico)
+Consulta::Consulta(int id, const string& data, float custo, const string& diagonostico, Paciente* paciente)
 	: Servico(id, data, custo),
 	diagonostico(diagonostico)
 {
-	paciente = NULL;
+	this->paciente = paciente;
 }
 
 Consulta::Consulta(int id, const string& data, float custo) : Servico(id, data, custo)
@@ -46,33 +46,18 @@ void Consulta::set_paciente(Paciente* paciente)
 	}
 
 	Paciente* p = this->get_paciente();
-	cout << "Consulta: " << this->get_id() << "ja se encontra atribuida ao paciente: " << p->get_nome() << "-" << p->get_id() << endl;
+	cout << "Consulta: " << this->get_id() << " ja se encontra atribuida ao paciente: " << p->get_nome() << "- " << p->get_id() << endl;
 }
 
-bool Consulta::add_exame(int id, const string& data, float custo, Tipologia tipo)
+bool Consulta::add_exame(Exame& exame)
 {
-	Exame* e0 = find_exame(id);
-	if (e0 == NULL)
-	{
-		Exame e(id, data, custo, tipo);
-		e.set_consulta(this);
-		cout << "Exame: " << id << " adicionado a consulta: " << this->get_id() << endl;
-		return exames.insert(e);
-	}
-	cout << "O exame: " << id << " já existe na consulta: " << this->get_id() << endl;
-}
-
-Exame* Consulta::find_exame(int id)
-{
-	Exame e;
-	e.set_id(id);
-	return exames.find(e);
+	return exames.insert(&exame);
 }
 
 void Consulta::print() const
 {
 	Servico::print();
 	cout << "Diagonostico: " << this->get_diagonostico() << endl;
-	Colecao<Exame>::iterator i;
-	for (i = exames.begin(); i != exames.end(); i++) (*i).print();
+	Colecao<Exame*>::iterator i;
+	for (i = exames.begin(); i != exames.end(); i++) (**i).print();
 }

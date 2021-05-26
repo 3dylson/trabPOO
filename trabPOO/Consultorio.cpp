@@ -44,12 +44,11 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, const st
 		Servico* s = find_servico(id_c);
 		if (!s)
 		{
-			p->add_consulta(id_c, data, custo, d);
-			Consulta* cp = p->find_consulta(id_c);
-			float total = this->get_valor_total_faturado() + cp->get_custo();
-			set_valor_total_faturado(total);
-			cout << "Consulta: " << id_c << " foi registada e atribuida ao paciente: " << p->get_id() << endl;
-			return servicos.insert(cp);
+			Consulta* c = new Consulta(id_c, data, custo, d, p);
+			cout << p->get_nome() << " registado a consulta: " << id_c << endl;
+			float total = this->get_valor_total_faturado() + custo;
+			this->set_valor_total_faturado(total);
+			return servicos.insert(c);
 		}
 
 		cout << "A consulta: " << id_c << " ja esta atribuida!" << endl;
@@ -63,15 +62,21 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 	Paciente* p = find_paciente(id_p);
 	if (p != NULL)
 	{
-		Consulta* c = p->find_consulta(id_c);
-		if (c != NULL)
+		Servico* c = find_servico(id_c);
+		if (c)
 		{
-			c->add_exame(id_e, data, custo, t);
+			Consulta** ce = p->find_consulta(id_c);
+			Exame* e = new Exame(id_e, data, custo, t);
+			e->set_consulta(ce);
+			float total = this->get_valor_total_faturado() + custo;
+			this->set_valor_total_faturado(total);
+			return servicos.insert(e);
+			/*c->add_exame(id_e, data, custo, t);
 			Exame* ec = c->find_exame(id_e);
 			float total = this->get_valor_total_faturado() + custo;
 			set_valor_total_faturado(total);
 			cout << "Exame: " << id_e << " adicionado a consulta: " << c->get_id() << endl;
-			return servicos.insert(ec);
+			return servicos.insert(ec);*/
 		}
 
 		cout << "A consulta: " << id_c << " nao existe!" << endl;
@@ -102,8 +107,8 @@ void Consultorio::print_consultas_paciente(int id_p)
 		cout << "Paciente: " << id_p << "nao existe!" << endl;
 	}
 
-	Colecao<Consulta> copia_consultas = p->get_consultas();
+	Colecao<Consulta*> copia_consultas = p->get_consultas();
 
-	Colecao<Consulta>::iterator i;
-	for (i = copia_consultas.begin(); i != copia_consultas.end(); i++) (*i).print();
+	Colecao<Consulta*>::iterator i;
+	for (i = copia_consultas.begin(); i != copia_consultas.end(); i++) (**i).print();
 }
