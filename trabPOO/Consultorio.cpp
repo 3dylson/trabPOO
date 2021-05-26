@@ -1,5 +1,7 @@
 ﻿#include "Consultorio.h"
 
+#include "Consulta.h"
+
 #include <iostream>
 
 Consultorio::Consultorio(string n) : nome(n)
@@ -79,6 +81,36 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 	cout << "O paciente: " << id_p << " nao existe!" << endl;
 }
 
+void Consultorio::remover_paciente(string nome, int id) {
+	Paciente* p = find_paciente(nome, id);
+	if (p) {
+		if(p.)
+	}
+	else
+		cout << "Paciente " << nome << " nao existe.\n";
+}
+
+void remover_servico(int id);
+
+/*bool Consultorio::add_consulta(int id_c, string data, float custo, int id_p) {
+	Consulta* c0 = find_consulta(id_c);
+	if (c0 == NULL)
+	{
+		Consulta c(id_c, data, custo);
+		c.set_consultorio(this);
+		cout << "Consulta: " << id_c << " adicionado ao consultorio: " << this->get_nome() << endl;
+		return exames.insert(e);
+	}
+	cout << "O exame: " << id << " já existe na consulta: " << this->get_id() << endl;
+}
+
+Consulta* Consultorio::find_consulta(int id)
+{
+	Consulta c;
+	c.set_id(id);
+	return consultas.find(c);
+}
+*/
 float Consultorio::get_valor_total_faturado() const
 {
 	return valor_total_faturado;

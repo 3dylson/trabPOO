@@ -4,6 +4,7 @@
 #include "ColecaoHibrida.h"
 #include "Servico.h"
 #include "Paciente.h"
+#include "Consulta.h"
 
 class Consultorio
 {
@@ -26,6 +27,14 @@ public:
 	bool atribuir_consulta(int id_c, string data, float custo, const string d, int id_p);
 
 	bool atribuir_exame(int id_p, int id_e, string data, float custo, Tipologia t, int id_c);
+
+	void remover_paciente(string nome, int id);
+
+	void remover_servico(int id);
+
+	/*bool add_consulta(int id_c, string data, float custo, int id_p);
+
+	Consulta* find_consulta(int id);*/
 
 	float get_valor_total_faturado() const;
 
