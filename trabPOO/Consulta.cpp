@@ -4,22 +4,11 @@
 
 #include "Paciente.h"
 
-Consulta::Consulta() : Servico(NULL, NULL, NULL)
-{
-	paciente = NULL;
-}
-
 Consulta::Consulta(int id, const string& data, float custo, const string& diagonostico, Paciente* paciente)
 	: Servico(id, data, custo),
 	diagonostico(diagonostico)
 {
 	this->paciente = paciente;
-}
-
-Consulta::Consulta(int id, const string& data, float custo) : Servico(id, data, custo)
-{
-	paciente = NULL;
-	diagonostico = "";
 }
 
 Consulta::Consulta(int id, const string& data, float custo, const string& diagnostico)
@@ -44,12 +33,13 @@ Paciente* Consulta::get_paciente() const
 	return paciente;
 }
 
-void Consulta::set_paciente(Paciente* paciente)
+bool Consulta::set_paciente(Paciente* paciente)
 {
 	if (paciente == NULL)
 	{
 		this->paciente = paciente;
 		cout << this->paciente->get_nome() << " registado a consulta: " << this->get_id() << endl;
+		return true;
 	}
 
 	Paciente* p = this->get_paciente();

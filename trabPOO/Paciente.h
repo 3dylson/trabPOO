@@ -22,7 +22,7 @@ public:
 
 	void set_id(int id);
 
-	bool add_consulta(int id, string data, float custo, string diagnostico);
+	bool add_consulta(int id, string& data, float custo, string& diagnostico, Paciente* p);
 
 	void print() const;
 

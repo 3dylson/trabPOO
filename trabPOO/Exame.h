@@ -26,8 +26,6 @@ public:
 
 	Consulta* get_consulta() const;
 
-	//void set_consulta(Consulta* c);
-
 	bool set_consulta(Consulta* ce);
 
 	void print() const;

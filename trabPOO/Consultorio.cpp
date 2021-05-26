@@ -36,20 +36,17 @@ Servico* Consultorio::find_servico(const int& id)
 	return servicos.find(&s);
 }
 
-bool Consultorio::atribuir_consulta(int id_c, string data, float custo, const string d, int id_p)
+bool Consultorio::atribuir_consulta(int id_c, string data, float custo, string d, int id_p)
 {
 	Paciente* p = find_paciente(id_p);
-	if (p != NULL)
+	if (p)
 	{
-		Servico* s = find_servico(id_c);
-		if (!s)
+		Consulta* c = p->find_consulta(id_c);
+		if (!c)
 		{
-			p->add_consulta(id_c, data, custo, d);
-			/*Consulta consulta(id_c, data, custo, d, p);
-			p->add(consulta);*/
+			p->add_consulta(id_c, data, custo, d, p);
 			Consulta* fc = p->find_consulta(id_c);
-			//fc->set_paciente(p);
-			cout << p->get_nome() << " registado a consulta: " << id_c << endl;
+			cout << "Paciente: " << id_p << " registado a consulta: " << id_c << endl;
 			float total = this->get_valor_total_faturado() + custo;
 			this->set_valor_total_faturado(total);
 			return servicos.insert(fc);

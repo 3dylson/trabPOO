@@ -5,6 +5,8 @@
 #include "Servico.h"
 #include "Paciente.h"
 
+using namespace std;
+
 class Consultorio
 {
 	string nome;
