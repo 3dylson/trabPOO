@@ -113,8 +113,11 @@ bool Consultorio::remover_servico(int id) {
 		return false;
 	}
 }
-
-//print_pacientes ???
+/*
+void Consultorio::print_paciente() {
+	Colecao<Paciente*>::iterator it;
+	for(it=pacientes.)
+}*/ // print pacientes ?????????????????????????????'
 
 float Consultorio::get_valor_total_faturado() const
 {
