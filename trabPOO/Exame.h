@@ -10,7 +10,7 @@ enum Tipologia { Analise_Clinicas = 1, Imagiologia, Check_up };
 class Exame : public Servico
 {
 	Tipologia tipo;
-	Consulta* consulta;
+	Consulta** consulta;
 
 public:
 
@@ -22,9 +22,11 @@ public:
 
 	void set_tipo(Tipologia tipo);
 
-	Consulta* get_consulta() const;
+	Consulta** get_consulta() const;
 
-	void set_consulta(Consulta* c);
+	//void set_consulta(Consulta* c);
+
+	bool set_consulta(Consulta** ce);
 
 	void print() const;
 };

@@ -31,8 +31,4 @@ public:
 	void set_custo(float custo);
 
 	virtual void print() const;
-
-	//void add_paciente(Paciente* paciente, Consulta* consulta);
-	//::Servico& operator=(Consulta* consulta);
-	//operator Consulta();
 };
