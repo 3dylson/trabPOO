@@ -91,7 +91,7 @@ bool Consultorio::remover_paciente(string nome, int id) {
 	if (p != NULL) {
 		pacientes.erase(*p);
 		delete p;
-		cout << "Paciente " << nome << " removido.\n";
+		printf("Paciente %s removido.\n", p->get_nome()); // ???????????????????????????
 		return true;
 	}
 	else {
