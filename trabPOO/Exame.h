@@ -18,13 +18,17 @@ public:
 
 	Exame(int id, const string& data, float custo, Tipologia tipo);
 
+	bool operator<(const Exame& e) const;
+
 	Tipologia get_tipo() const;
 
 	void set_tipo(Tipologia tipo);
 
 	Consulta* get_consulta() const;
 
-	void set_consulta(Consulta* c);
+	//void set_consulta(Consulta* c);
+
+	bool set_consulta(Consulta* ce);
 
 	void print() const;
 };

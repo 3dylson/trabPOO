@@ -17,9 +17,10 @@ public:
 
 	Consulta();
 
-	Consulta(int id, const string& data, float custo, const string& diagonostico);
+	Consulta(int id, const string& data, float custo, const string& diagonostico, Paciente* paciente);
 
 	Consulta(int id, const string& data, float custo);
+	Consulta(int id, const string& data, float custo, const string& diagnostico);
 
 	string get_diagonostico() const;
 
@@ -29,9 +30,13 @@ public:
 
 	void set_paciente(Paciente* paciente);
 
-	bool add_exame(int id, const string& data, float custo, Tipologia tipo);
+	bool add_exame(int id, string data, float custo, Tipologia tipo);
 
-	Exame* find_exame(int id);
+	int num_exames() const;
+
+	Exame* find_exame(int& id);
+
+	bool operator<(const Consulta& c) const;
 
 	void print() const;
 };

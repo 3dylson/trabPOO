@@ -18,13 +18,17 @@ public:
 
 	void set_nome(const string& nome);
 
-	int get_id() const;
+	int get_id();
 
 	void set_id(int id);
 
-	bool add_consulta(int id, const string& data, float custo, const string& diagonostico);
+	bool add_consulta(int id, string data, float custo, string diagnostico);
+
+	void print() const;
 
 	Consulta* find_consulta(int id);
+
+	bool add(const Consulta& c);
 
 	Colecao<Consulta> get_consultas() const;
 };

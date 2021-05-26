@@ -12,7 +12,7 @@ Servico::Servico(const int id, const string& data, const float custo)
 
 bool Servico::operator<(const Servico& s) const
 {
-	return id < s.get_id();
+	return id < s.id;
 }
 
 int Servico::get_id() const

@@ -10,7 +10,7 @@ Paciente::Paciente(const string& nome, int id)
 
 bool Paciente::operator<(const Paciente& p) const
 {
-	return id < p.get_id();
+	return id < p.id;
 }
 
 string Paciente::get_nome() const
@@ -23,7 +23,7 @@ void Paciente::set_nome(const string& nome)
 	this->nome = nome;
 }
 
-int Paciente::get_id() const
+int Paciente::get_id()
 {
 	return id;
 }
@@ -33,24 +33,29 @@ void Paciente::set_id(int id)
 	this->id = id;
 }
 
-bool Paciente::add_consulta(int id, const string& data, float custo, const string& diagonostico)
+bool Paciente::add_consulta(int id, string data, float custo, string diagnostico)
 {
-	Consulta* c0 = find_consulta(id);
-	if (c0 != NULL)
-	{
-		cout << "A consulta: " << id << " ja existe" << endl;
-	}
-	Consulta c(id, data, custo, diagonostico);
+	Consulta c(id, data, custo, diagnostico);
 	c.set_paciente(this);
-	cout << "Consulta: " << id << "registada para o paciente: " << this->get_id() << endl;
 	return consultas.insert(c);
+}
+
+void Paciente::print() const
+{
+	Colecao<Consulta>::iterator i;
+	for (i = consultas.begin(); i != consultas.end(); i++)
+		(i)->print();
 }
 
 Consulta* Paciente::find_consulta(int id)
 {
-	Consulta c;
-	c.set_id(id);
+	Consulta c(id, "", NULL);
 	return consultas.find(c);
+}
+
+bool Paciente::add(const Consulta& c)
+{
+	return consultas.insert(c);
 }
 
 Colecao<Consulta> Paciente::get_consultas() const
