@@ -88,7 +88,7 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 }
 bool Consultorio::remover_paciente(string nome, int id) {
 	Paciente* p = find_paciente(id);
-	if (p!=NULL) {
+	if (p != NULL) {
 		pacientes.erase(*p);
 		delete p;
 		cout << "Paciente " << nome << " removido.\n";
@@ -98,6 +98,7 @@ bool Consultorio::remover_paciente(string nome, int id) {
 		cout << "Paciente " << nome << " nao existe.\n";
 		return false;
 	}
+}
 
 bool Consultorio::remover_servico(int id) {
 	Servico* s = find_servico(id);
@@ -105,7 +106,7 @@ bool Consultorio::remover_servico(int id) {
 		servicos.erase(s);
 		delete s;
 		cout << "Servico " << id << " removido.\n";
-		return true
+		return true;
 	}
 	else {
 		cout << "Servico " << id << " nao existe.\n";
