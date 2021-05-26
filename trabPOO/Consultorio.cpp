@@ -88,9 +88,9 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 }
 
 bool Consultorio::remover_paciente(string nome, int id) {
-	Paciente* p = find_paciente(nome);
+	Paciente* p = find_paciente(id);
 	if (p!=NULL) {
-		pacientes.erase(p);
+		pacientes.erase(*p);
 		delete p;
 		return true;
 	}
