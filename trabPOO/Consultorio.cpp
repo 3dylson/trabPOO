@@ -44,11 +44,15 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, const st
 		Servico* s = find_servico(id_c);
 		if (!s)
 		{
-			Consulta* c = new Consulta(id_c, data, custo, d, p);
+			p->add_consulta(id_c, data, custo, d);
+			/*Consulta consulta(id_c, data, custo, d, p);
+			p->add(consulta);*/
+			Consulta* fc = p->find_consulta(id_c);
+			//fc->set_paciente(p);
 			cout << p->get_nome() << " registado a consulta: " << id_c << endl;
 			float total = this->get_valor_total_faturado() + custo;
 			this->set_valor_total_faturado(total);
-			return servicos.insert(c);
+			return servicos.insert(fc);
 		}
 
 		cout << "A consulta: " << id_c << " ja esta atribuida!" << endl;
@@ -65,18 +69,15 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 		Servico* c = find_servico(id_c);
 		if (c)
 		{
-			Consulta** ce = p->find_consulta(id_c);
-			Exame* e = new Exame(id_e, data, custo, t);
-			e->set_consulta(ce);
+			/*Exame exame(id_e, data, custo, t);
+			p->find_consulta(id_c).*/
+
+			Consulta* fc = p->find_consulta(id_c);
+			fc->add_exame(id_e, data, custo, t);
+			Exame* fe = fc->find_exame(id_e);
 			float total = this->get_valor_total_faturado() + custo;
 			this->set_valor_total_faturado(total);
-			return servicos.insert(e);
-			/*c->add_exame(id_e, data, custo, t);
-			Exame* ec = c->find_exame(id_e);
-			float total = this->get_valor_total_faturado() + custo;
-			set_valor_total_faturado(total);
-			cout << "Exame: " << id_e << " adicionado a consulta: " << c->get_id() << endl;
-			return servicos.insert(ec);*/
+			return servicos.insert(fe);
 		}
 
 		cout << "A consulta: " << id_c << " nao existe!" << endl;
@@ -107,8 +108,6 @@ void Consultorio::print_consultas_paciente(int id_p)
 		cout << "Paciente: " << id_p << "nao existe!" << endl;
 	}
 
-	Colecao<Consulta*> copia_consultas = p->get_consultas();
-
-	Colecao<Consulta*>::iterator i;
-	for (i = copia_consultas.begin(); i != copia_consultas.end(); i++) (**i).print();
+	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << endl;
+	p->print();
 }

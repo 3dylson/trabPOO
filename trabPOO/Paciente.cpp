@@ -33,18 +33,32 @@ void Paciente::set_id(int id)
 	this->id = id;
 }
 
-bool Paciente::add_consulta(Consulta& consulta)
+bool Paciente::add_consulta(int id, string data, float custo, string diagnostico)
 {
-	return consultas.insert(&consulta);
+	Consulta c(id, data, custo, diagnostico);
+	c.set_paciente(this);
+	return consultas.insert(c);
 }
 
-Consulta** Paciente::find_consulta(int& id)
+void Paciente::print() const
+{
+	Colecao<Consulta>::iterator i;
+	for (i = consultas.begin(); i != consultas.end(); i++)
+		(i)->print();
+}
+
+Consulta* Paciente::find_consulta(int id)
 {
 	Consulta c(id, "", NULL);
-	return consultas.find(&c);
+	return consultas.find(c);
 }
 
-Colecao<Consulta*> Paciente::get_consultas() const
+bool Paciente::add(const Consulta& c)
+{
+	return consultas.insert(c);
+}
+
+Colecao<Consulta> Paciente::get_consultas() const
 {
 	return consultas;
 }

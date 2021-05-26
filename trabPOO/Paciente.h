@@ -7,7 +7,7 @@ class Paciente
 {
 	string nome;
 	int id;
-	Colecao<Consulta*> consultas;
+	Colecao<Consulta> consultas;
 public:
 
 	Paciente(const string& nome, int id);
@@ -22,9 +22,13 @@ public:
 
 	void set_id(int id);
 
-	bool add_consulta(Consulta& consulta);
+	bool add_consulta(int id, string data, float custo, string diagnostico);
 
-	Consulta** find_consulta(int& id);
+	void print() const;
 
-	Colecao<Consulta*> get_consultas() const;
+	Consulta* find_consulta(int id);
+
+	bool add(const Consulta& c);
+
+	Colecao<Consulta> get_consultas() const;
 };

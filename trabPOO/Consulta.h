@@ -11,7 +11,7 @@ class Consulta : public Servico
 {
 	string diagonostico;
 	Paciente* paciente;
-	Colecao<Exame*> exames;
+	Colecao<Exame> exames;
 
 public:
 
@@ -20,6 +20,7 @@ public:
 	Consulta(int id, const string& data, float custo, const string& diagonostico, Paciente* paciente);
 
 	Consulta(int id, const string& data, float custo);
+	Consulta(int id, const string& data, float custo, const string& diagnostico);
 
 	string get_diagonostico() const;
 
@@ -29,7 +30,13 @@ public:
 
 	void set_paciente(Paciente* paciente);
 
-	bool add_exame(Exame& exame);
+	bool add_exame(int id, string data, float custo, Tipologia tipo);
+
+	int num_exames() const;
+
+	Exame* find_exame(int& id);
+
+	bool operator<(const Consulta& c) const;
 
 	void print() const;
 };

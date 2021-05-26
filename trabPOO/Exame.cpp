@@ -17,6 +17,11 @@ Exame::Exame(int id, const string& data, float custo, Tipologia tipo)
 	consulta = NULL;
 }
 
+bool Exame::operator<(const Exame& e) const
+{
+	return id < e.id;
+}
+
 Tipologia Exame::get_tipo() const
 {
 	return tipo;
@@ -27,7 +32,7 @@ void Exame::set_tipo(Tipologia tipo)
 	this->tipo = tipo;
 }
 
-Consulta** Exame::get_consulta() const
+Consulta* Exame::get_consulta() const
 {
 	return consulta;
 }
@@ -43,7 +48,7 @@ Consulta** Exame::get_consulta() const
 //	cout << "Exame: " << this->get_id() << "ja se encontra atribuida a consulta: " << c1->get_id() << endl;
 //}
 
-bool Exame::set_consulta(Consulta** ce)
+bool Exame::set_consulta(Consulta* ce)
 {
 	if (consulta == NULL)
 	{
