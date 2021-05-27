@@ -97,6 +97,7 @@ bool Consultorio::remover_paciente(int id) {
 		else {
 			cout << "Paciente " << p->get_nome() << " foi removido!\n";
 			pacientes.erase(*p);
+			return true;
 		}
 	}
 	else {

@@ -45,4 +45,6 @@ public:
 	void print_valor_total() const;
 
 	void print_consultas_paciente(int id_p);
+
+	void num_paciente() const;
 };

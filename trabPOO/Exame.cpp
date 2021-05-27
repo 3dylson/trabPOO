@@ -37,11 +37,11 @@ bool Exame::set_consulta(Consulta* ce)
 	if (consulta == NULL)
 	{
 		consulta = ce;
-		cout << "Exame: " << this->get_id() << " , do Tipo - " << this->get_tipo() << " adicionado a consulta." << endl;
+		cout << "Exame: " << this->get_id() << " , do Tipo - " << this->get_tipo() << " adicionado a consulta: " << ce->get_id() << endl;
 		return true;
 	}
 
-	cout << "Exame: " << this->get_id() << " ja se encontra atribuido" << endl;
+	cout << "Exame: " << this->get_id() << " ja se encontra atribuido a consulta: " << this->get_consulta()->get_id() << endl;
 }
 
 void Exame::print() const

@@ -29,8 +29,6 @@ public:
 
 	bool set_paciente(Paciente* paciente);
 
-	bool add_exame(int id, string data, float custo, Tipologia tipo);
-
 	bool add(const Exame& exame);
 
 	Exame* find_exame(int& id);

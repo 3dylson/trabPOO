@@ -33,13 +33,6 @@ void Paciente::set_id(int id)
 	this->id = id;
 }
 
-bool Paciente::add_consulta(int id, string& data, float custo, string& diagnostico, Paciente* paciente)
-{
-	Consulta c(id, data, custo, diagnostico, paciente);
-	//c.set_paciente(this);
-	return consultas.insert(c);
-}
-
 void Paciente::print() const
 {
 	Colecao<Consulta>::iterator i;
@@ -58,7 +51,7 @@ bool Paciente::add(const Consulta& c)
 	return consultas.insert(c);
 }
 
-Colecao<Consulta> Paciente::get_consultas() const
+int Paciente::num_consulta() const
 {
-	return consultas;
+	return consultas.size();
 }

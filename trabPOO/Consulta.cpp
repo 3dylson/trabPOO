@@ -46,15 +46,10 @@ bool Consulta::set_paciente(Paciente* paciente)
 	cout << "Consulta: " << this->get_id() << " ja se encontra atribuida ao paciente: " << p->get_nome() << "- " << p->get_id() << endl;
 }
 
-bool Consulta::add_exame(int id, string data, float custo, Tipologia tipo)
-{
-	Exame ex(id, data, custo, tipo);
-	ex.set_consulta(this);
-	return exames.insert(ex);
-}
-
 bool Consulta::add(const Exame& exame)
 {
+	float update_custo = exame.get_custo() + this->get_custo();
+	this->set_custo(update_custo);
 	return exames.insert(exame);
 }
 
@@ -77,6 +72,6 @@ bool Consulta::operator<(const Consulta& c) const
 void Consulta::print() const
 {
 	Servico::print();
-	cout << "Diagonostico: " << this->get_diagonostico() << endl;
-	cout << "Estao associados " << this->num_exames() << "exames a consulta: " << this->get_id() << endl;
+	cout << "Diagonostico: " << this->get_diagonostico() << " Custo: " << get_custo() << endl;
+	cout << "Estao associados " << this->num_exames() << " exames a consulta: " << this->get_id() << endl;
 }

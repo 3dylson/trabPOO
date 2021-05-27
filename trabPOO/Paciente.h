@@ -22,13 +22,11 @@ public:
 
 	void set_id(int id);
 
-	bool add_consulta(int id, string& data, float custo, string& diagnostico, Paciente* paciente);
-
 	void print() const;
 
 	Consulta* find_consulta(int id);
 
 	bool add(const Consulta& c);
 
-	Colecao<Consulta> get_consultas() const;
+	int num_consulta() const;
 };

@@ -12,7 +12,7 @@ Servico::Servico(const int id, const string& data, const float custo)
 
 bool Servico::operator<(const Servico& s) const
 {
-	return id < s.id;
+	return get_id() < s.get_id();
 }
 
 int Servico::get_id() const
@@ -45,17 +45,7 @@ void Servico::set_custo(float custo)
 	this->custo = custo;
 }
 
-//void Servico::add_paciente(Paciente* paciente, Consulta* consulta)
-//{
-//	consulta->set_paciente(paciente);
-//}
-
 void Servico::print() const
 {
-	cout << "ID : " << this->get_id() << "Data : " << this->get_data() << "Custo: " << this->get_custo() << endl;
+	cout << "ID : " << this->get_id() << " Data : " << this->get_data() << endl;
 }
-
-//Servico::operator Consulta()
-//{
-//	return Consulta(this->get_id(), this->get_data(), this->get_custo());
-//}

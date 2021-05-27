@@ -6,13 +6,41 @@
 
 int main()
 {
+	cout << endl << "|-------------------------|" << endl;
+	cout << endl << "|     Consultorio xpto    |" << endl;
+	cout << endl << "|-------------------------|" << endl;
+	cout << "\n" << endl;
+
 	Consultorio xpto("xpto");
-	xpto.add_paciente("Teste", 1);
-	xpto.atribuir_consulta(1, "01/02/21", 19.99, "lorem", 2);
+	cout << "Adicionar paciente 1:" << endl;
+	xpto.add_paciente("Pedro", 1);
+	cout << "Adicionar o mesmo paciente: " << endl;
+	xpto.add_paciente("Pedro", 1);
+	cout << "Adicionar paciente 2 e 3:" << endl;
+	xpto.add_paciente("Maria", 2);
+	xpto.add_paciente("Rui", 3);
+	cout << "Listar pacientes: " << endl;
+	xpto.print_pacientes();
+	cout << "Remover paciente 3: " << endl;
+	xpto.remover_paciente(3);
+	xpto.print_pacientes();
+
+	xpto.print_valor_total();
+	cout << "Atribuir consulta a pacientes" << endl;
+	xpto.atribuir_consulta(1, "01/01/01", 5.99, "Lorem ipsum dolor sit amet.", 1);
+	xpto.atribuir_consulta(2, "02/01/01", 3.99, "Lorem ipsum dolor sit amet.", 1);
+	cout << "Listar servicos: " << endl;
+	xpto.print_servicos();
+	xpto.print_valor_total();
+	cout << "Atribuir exames a consultas: " << endl;
+	xpto.atribuir_exame(1, 3, "0/01/01", 10.25, Analise_Clinicas, 1);
+	xpto.print_valor_total();
+
+	/*xpto.atribuir_consulta(1, "01/02/21", 19.99, "lorem", 2);
 	xpto.print_valor_total();
 	xpto.atribuir_consulta(1, "01/02/21", 19.99, "lorem", 1);
 	xpto.print_valor_total();
 	xpto.atribuir_exame(1, 2, "02/12/12", 10.99, Check_up, 1);
 	xpto.atribuir_exame(1, 3, "02/12/12", 10.99, Analise_Clinicas, 1);
-	xpto.print_consultas_paciente(1);
+	xpto.print_consultas_paciente(1);*/
 }
