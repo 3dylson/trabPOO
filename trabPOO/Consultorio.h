@@ -28,9 +28,13 @@ public:
 
 	bool atribuir_exame(int id_p, int id_e, string data, float custo, Tipologia t, int id_c);
 
-	bool remover_paciente(string nome, int id);
+	bool remover_paciente(int id);
 
 	bool remover_servico(int id);
+
+	void print_paciente() const;
+
+	void print_servicos();
 
 	/*bool add_consulta(int id_c, string data, float custo, int id_p);
 

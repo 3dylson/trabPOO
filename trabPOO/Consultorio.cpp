@@ -23,7 +23,7 @@ bool Consultorio::add_paciente(string n, int id)
 		cout << "Paciente " << p.get_nome() << " adicionado." << endl;
 		return pacientes.insert(p);
 	}
-	cout << "Paciente: " << p0->get_id() << " já existe!" << endl;  //nao devia ter um return ??
+	cout << "Paciente: " << p0->get_id() << " já existe!" << endl; 
 }
 
 Paciente* Consultorio::find_paciente(int id)
@@ -86,26 +86,28 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 	}
 	cout << "O paciente: " << id_p << " nao existe!" << endl;
 }
-bool Consultorio::remover_paciente(string nome, int id) {
+bool Consultorio::remover_paciente(int id) {
 	Paciente* p = find_paciente(id);
-	if (p != NULL) {
+	if (p!=NULL) {
+		cout << "Paciente " << p->get_nome() << " foi removido!\n";
 		pacientes.erase(*p);
 		delete p;
-		printf("Paciente %s removido.\n", p->get_nome()); // ???????????????????????????
+		
 		return true;
-	}
-	else {
-		cout << "Paciente " << nome << " nao existe.\n";
+	} else{
+		cout << "Paciente de id " << id << " nao existe.\n";
 		return false;
 	}
+	
 }
 
 bool Consultorio::remover_servico(int id) {
 	Servico* s = find_servico(id);
 	if (s != NULL) {
+		cout << "Servico " << id << " removido.\n";
 		servicos.erase(s);
 		delete s;
-		cout << "Servico " << id << " removido.\n";
+		
 		return true;
 	}
 	else {
@@ -113,15 +115,24 @@ bool Consultorio::remover_servico(int id) {
 		return false;
 	}
 }
-/*
-void Consultorio::print_paciente() {
-	Colecao<Paciente*>::iterator it;
-	for(it=pacientes.)
-}*/ // print pacientes ?????????????????????????????'
+
+void Consultorio::print_paciente() const {
+	Colecao<Paciente>::iterator it;
+	for (it = pacientes.begin(); it != pacientes.end(); it++) {
+		cout << "\t" << (*it).get_nome() << endl;
+	}
+}
+
+void Consultorio::print_servicos() {
+	ColecaoHibrida<Servico*>::iterator it;
+	for (it = servicos.begin(); it != servicos.end(); it++) {
+		cout << "\t" << (*it)->get_id() << endl;
+	}
+}
 
 float Consultorio::get_valor_total_faturado() const
 {
-	return valor_total_faturado;
+	return valor_total_faturado; 
 }
 
 void Consultorio::set_valor_total_faturado(float valor_total_faturado)
