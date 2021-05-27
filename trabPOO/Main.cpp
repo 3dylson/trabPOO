@@ -13,5 +13,6 @@ int main()
 	xpto.remover_paciente(2);
 	xpto.remover_paciente(9);
 
+	xpto.print_paciente();
 	
 }
