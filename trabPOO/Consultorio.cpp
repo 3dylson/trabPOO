@@ -23,7 +23,7 @@ bool Consultorio::add_paciente(string n, int id)
 		cout << "Paciente " << p.get_nome() << " adicionado." << endl;
 		return pacientes.insert(p);
 	}
-	cout << "Paciente: " << p0->get_id() << " já existe!" << endl; 
+	cout << "Paciente: " << p0->get_id() << " ja existe!" << endl;
 }
 
 Paciente* Consultorio::find_paciente(int id)
@@ -47,6 +47,8 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, string d
 		if (!c)
 		{
 			Consulta consulta(id_c, data, custo, d, p);
+			float update_custo = consulta.get_custo() + custo;
+			consulta.set_custo(update_custo);
 			p->add(consulta);
 			Consulta* fc = p->find_consulta(id_c);
 			cout << "Paciente: " << id_p << " registado a consulta: " << id_c << endl;
@@ -71,9 +73,10 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 		{
 			Exame exame(id_e, data, custo, t);
 			exame.set_consulta(c);
+			float update_custo = exame.get_custo() + custo;
+			exame.set_custo(update_custo);
 			c->add(exame);
 			Exame* fe = c->find_exame(id_e);
-
 			float total = this->get_valor_total_faturado() + custo;
 			this->set_valor_total_faturado(total);
 			return servicos.insert(fe);
@@ -83,19 +86,18 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 	}
 	cout << "O paciente: " << id_p << " nao existe!" << endl;
 }
+
 bool Consultorio::remover_paciente(int id) {
 	Paciente* p = find_paciente(id);
-	if (p!=NULL) {
+	if (p != NULL) {
 		cout << "Paciente " << p->get_nome() << " foi removido!\n";
 		pacientes.erase(*p);
-		delete p;
-		
 		return true;
-	} else{
+	}
+	else {
 		cout << "Paciente de id " << id << " nao existe.\n";
 		return false;
 	}
-	
 }
 
 bool Consultorio::remover_servico(int id) {
@@ -104,7 +106,7 @@ bool Consultorio::remover_servico(int id) {
 		cout << "Servico " << id << " removido.\n";
 		servicos.erase(s);
 		delete s;
-		
+
 		return true;
 	}
 	else {
@@ -113,14 +115,14 @@ bool Consultorio::remover_servico(int id) {
 	}
 }
 
-void Consultorio::print_paciente() const {
+void Consultorio::print_pacientes() const {
 	Colecao<Paciente>::iterator it;
 	for (it = pacientes.begin(); it != pacientes.end(); it++) {
 		cout << "\t" << (*it).get_nome() << endl;
 	}
 }
 
-void Consultorio::print_servicos() {
+void Consultorio::print_servicos() const {
 	ColecaoHibrida<Servico*>::iterator it;
 	for (it = servicos.begin(); it != servicos.end(); it++) {
 		cout << "\t" << (*it)->get_id() << endl;
@@ -129,7 +131,7 @@ void Consultorio::print_servicos() {
 
 float Consultorio::get_valor_total_faturado() const
 {
-	return valor_total_faturado; 
+	return valor_total_faturado;
 }
 
 void Consultorio::set_valor_total_faturado(float valor_total_faturado)

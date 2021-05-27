@@ -20,7 +20,7 @@ public:
 
 	string get_nome() const;
 
-	bool add_paciente(string n, int id);
+	bool add_paciente(const string n, int id);
 
 	Paciente* find_paciente(int id);
 
@@ -34,13 +34,9 @@ public:
 
 	bool remover_servico(int id);
 
-	void print_paciente() const;
+	void print_pacientes() const;
 
-	void print_servicos();
-
-	/*bool add_consulta(int id_c, string data, float custo, int id_p);
-
-	Consulta* find_consulta(int id);*/
+	void print_servicos() const;
 
 	float get_valor_total_faturado() const;
 
