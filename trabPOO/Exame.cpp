@@ -5,11 +5,6 @@
 
 #include "Consulta.h"
 
-Exame::Exame() : Servico(NULL, NULL, NULL)
-{
-	consulta = NULL;
-}
-
 Exame::Exame(int id, const string& data, float custo, Tipologia tipo)
 	: Servico(id, data, custo),
 	tipo(tipo)

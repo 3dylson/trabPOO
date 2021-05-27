@@ -14,8 +14,6 @@ class Exame : public Servico
 
 public:
 
-	Exame();
-
 	Exame(int id, const string& data, float custo, Tipologia tipo);
 
 	bool operator<(const Exame& e) const;
