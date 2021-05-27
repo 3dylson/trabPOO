@@ -33,10 +33,10 @@ void Paciente::set_id(int id)
 	this->id = id;
 }
 
-bool Paciente::add_consulta(int id, string data, float custo, string diagnostico)
+bool Paciente::add_consulta(int id, string& data, float custo, string& diagnostico, Paciente* paciente)
 {
-	Consulta c(id, data, custo, diagnostico);
-	c.set_paciente(this);
+	Consulta c(id, data, custo, diagnostico, paciente);
+	//c.set_paciente(this);
 	return consultas.insert(c);
 }
 
@@ -49,7 +49,7 @@ void Paciente::print() const
 
 Consulta* Paciente::find_consulta(int id)
 {
-	Consulta c(id, "", NULL);
+	Consulta c(id, "", NULL, "");
 	return consultas.find(c);
 }
 

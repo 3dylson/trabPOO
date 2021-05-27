@@ -6,6 +6,8 @@
 #include "Paciente.h"
 #include "Consulta.h"
 
+using namespace std;
+
 class Consultorio
 {
 	string nome;

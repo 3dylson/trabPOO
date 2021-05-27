@@ -14,8 +14,6 @@ class Exame : public Servico
 
 public:
 
-	Exame();
-
 	Exame(int id, const string& data, float custo, Tipologia tipo);
 
 	bool operator<(const Exame& e) const;
@@ -25,8 +23,6 @@ public:
 	void set_tipo(Tipologia tipo);
 
 	Consulta* get_consulta() const;
-
-	//void set_consulta(Consulta* c);
 
 	bool set_consulta(Consulta* ce);
 
