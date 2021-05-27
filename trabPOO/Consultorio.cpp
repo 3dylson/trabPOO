@@ -90,13 +90,17 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 bool Consultorio::remover_paciente(int id) {
 	Paciente* p = find_paciente(id);
 	if (p != NULL) {
-		cout << "Paciente " << p->get_nome() << " foi removido!\n";
-		pacientes.erase(*p);
-		return true;
+		if (p->num_consulta() > 0)
+		{
+			cout << "Impossivel remover o paciente: " << id << " contem consultas associadas!" << endl;
+		}
+		else {
+			cout << "Paciente " << p->get_nome() << " foi removido!\n";
+			pacientes.erase(*p);
+		}
 	}
 	else {
 		cout << "Paciente de id " << id << " nao existe.\n";
-		return false;
 	}
 }
 
