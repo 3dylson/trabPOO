@@ -32,7 +32,9 @@ public:
 
 	bool remover_paciente(int id);
 
-	bool remover_servico(int id);
+	bool remover_consulta(int id_c, int id_p);
+
+	bool remover_exame(int id_e, int id_c, int id_p);
 
 	void print_pacientes() const;
 

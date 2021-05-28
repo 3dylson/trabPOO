@@ -47,5 +47,5 @@ void Servico::set_custo(float custo)
 
 void Servico::print() const
 {
-	cout << "ID : " << this->get_id() << ", Data : " << this->get_data();
+	cout << "ID : " << this->get_id() << ", Data : " << this->get_data() << ", Custo: " << this->get_custo();
 }

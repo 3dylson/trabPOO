@@ -57,14 +57,8 @@ bool Consulta::remover_exame(int id_e)
 {
 	Exame* e = find_exame(id_e);
 
-	if (e)
-	{
-		cout << "Exame ID: " << id_e << " foi removida!\n";
-		exames.erase(*e);
-		return true;
-	}
-
-	cout << "Exame de id " << id_e << " nao existe.\n";
+	exames.erase(*e);
+	return true;
 }
 
 int Consulta::num_exames() const
@@ -87,7 +81,7 @@ void Consulta::print() const
 {
 	cout << "Consulta - ";
 	Servico::print();
-	cout << " Diagonostico: " << this->get_diagonostico() << " Custo: " << get_custo() << endl;
+	cout << ", Diagonostico: " << this->get_diagonostico() << endl;
 	cout << "Estao associados " << this->num_exames() << " exame(s) a consulta: " << this->get_id() << endl;
 	Colecao<Exame>::iterator i;
 	for (i = exames.begin(); i != exames.end(); i++)

@@ -56,12 +56,13 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, string d
 			this->set_valor_total_faturado(total);
 			return servicos.insert(fc);
 		}
-
-		cout << "A consulta: " << id_c << " ja esta atribuida!" << endl;
-		//return false;
+		else {
+			cout << "A consulta: " << id_c << " ja esta atribuida ao paciente: " << p->get_nome() << " ID: " << p->get_id() << endl;
+		}
 	}
-
-	cout << "O paciente: " << id_p << " nao existe!" << endl;
+	else {
+		cout << "O paciente: " << id_p << " nao existe!" << endl;
+	}
 }
 
 bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, Tipologia t, int id_c)
@@ -85,7 +86,9 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 
 		cout << "A consulta: " << id_c << " nao existe!" << endl;
 	}
-	cout << "O paciente: " << id_p << " nao existe!" << endl;
+	else {
+		cout << "O paciente: " << id_p << " nao existe!" << endl;
+	}
 }
 
 bool Consultorio::remover_paciente(int id) {
@@ -106,32 +109,75 @@ bool Consultorio::remover_paciente(int id) {
 	}
 }
 
-bool Consultorio::remover_servico(int id) {
-	Servico* s = find_servico(id);
-	if (s != NULL) {
-		cout << "Servico " << id << " removido.\n";
-		servicos.erase(s);
-		delete s;
-
-		return true;
+bool Consultorio::remover_consulta(int id_c, int id_p)
+{
+	Paciente* p = find_paciente(id_p);
+	if (p)
+	{
+		Consulta* c = p->find_consulta(id_c);
+		if (c)
+		{
+			if (c->num_exames() > 0)
+			{
+				cout << "Impossivel remover a consulta: " << id_c << " contem exames associados!" << endl;
+			}
+			else
+			{
+				cout << "Consulta Id: " << id_c << ", do paciente: " << p->get_nome() << " foi removida!\n";
+				servicos.erase(c);
+				p->remover_consulta(id_c);
+				return true;
+			}
+		}
+		else {
+			cout << "Consulta de id " << id_c << " nao existe.\n";
+		}
 	}
 	else {
-		cout << "Servico " << id << " nao existe.\n";
-		return false;
+		cout << "Paciente de id " << id_p << " nao existe.\n";
+	}
+}
+
+bool Consultorio::remover_exame(int id_e, int id_c, int id_p)
+{
+	Paciente* p = find_paciente(id_p);
+	if (p)
+	{
+		Consulta* c = p->find_consulta(id_c);
+		if (c)
+		{
+			Exame* e = c->find_exame(id_e);
+			if (e)
+			{
+				cout << "Exame Id: " << id_e << ", do paciente: " << p->get_nome() << " da consulta: " << id_c << ", foi removida!\n";
+				servicos.erase(e);
+				c->remover_exame(id_e);
+				return true;
+			}
+			else {
+				cout << "Exame de id " << id_e << " nao existe.\n";
+			}
+		}
+		else {
+			cout << "Consulta de id " << id_c << " nao existe.\n";
+		}
+	}
+	else {
+		cout << "Paciente de id " << id_p << " nao existe.\n";
 	}
 }
 
 void Consultorio::print_pacientes() const {
 	Colecao<Paciente>::iterator it;
 	for (it = pacientes.begin(); it != pacientes.end(); it++) {
-		cout << "\t" << (*it).get_nome() << endl;
+		cout << "\t" << "Nome: " << (*it).get_nome() << ", Num consultas: " << (*it).num_consulta() << endl;
 	}
 }
 
 void Consultorio::print_servicos() const {
 	ColecaoHibrida<Servico*>::iterator it;
 	for (it = servicos.begin(); it != servicos.end(); it++) {
-		cout << "\t" << (*it)->get_id() << " - " << (*it)->get_data() << " - " << (*it)->get_custo() << endl;
+		cout << "\t" << "ID- " << (*it)->get_id() << ", Data- " << (*it)->get_data() << ", Custo- " << (*it)->get_custo() << endl;
 	}
 }
 
@@ -158,7 +204,7 @@ void Consultorio::print_consultas_paciente(int id_p)
 		cout << "Paciente: " << id_p << "nao existe!" << endl;
 	}
 
-	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << ", Consultas: " << endl;
+	cout << "Todas consultas associadas - ";
 	p->print();
 }
 
