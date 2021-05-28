@@ -47,4 +47,6 @@ public:
 	void print_consultas_paciente(int id_p);
 
 	int num_paciente() const;
+
+	int num_servico() const;
 };

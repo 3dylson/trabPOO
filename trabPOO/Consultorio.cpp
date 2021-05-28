@@ -72,9 +72,9 @@ bool Consultorio::atribuir_exame(int id_p, int id_e, string data, float custo, T
 		if (c)
 		{
 			Exame exame(id_e, data, custo, t);
-			exame.set_consulta(c);
 			float update_custo = exame.get_custo() + custo;
 			exame.set_custo(update_custo);
+			exame.set_consulta(c);
 			c->add(exame);
 			Exame* fe = c->find_exame(id_e);
 			float total = this->get_valor_total_faturado() + custo;
@@ -164,4 +164,9 @@ void Consultorio::print_consultas_paciente(int id_p)
 int Consultorio::num_paciente() const
 {
 	return pacientes.size();
+}
+
+int Consultorio::num_servico() const
+{
+	return servicos.size();
 }
