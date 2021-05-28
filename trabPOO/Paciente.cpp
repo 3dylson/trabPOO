@@ -35,6 +35,7 @@ void Paciente::set_id(int id)
 
 void Paciente::print() const
 {
+	cout << "Paciente: " << this->get_nome() << " ID: " << this->id << endl;
 	Colecao<Consulta>::iterator i;
 	for (i = consultas.begin(); i != consultas.end(); i++)
 		(i)->print();

@@ -46,5 +46,5 @@ public:
 
 	void print_consultas_paciente(int id_p);
 
-	void num_paciente() const;
+	int num_paciente() const;
 };

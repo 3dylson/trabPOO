@@ -51,7 +51,7 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, string d
 			consulta.set_custo(update_custo);
 			p->add(consulta);
 			Consulta* fc = p->find_consulta(id_c);
-			cout << "Paciente: " << id_p << " registado a consulta: " << id_c << endl;
+			cout << "Paciente: " << id_p << " Nome: " << p->get_nome() << " registado a consulta: " << id_c << " Custo: " << custo << endl;
 			float total = this->get_valor_total_faturado() + custo;
 			this->set_valor_total_faturado(total);
 			return servicos.insert(fc);
@@ -130,7 +130,7 @@ void Consultorio::print_pacientes() const {
 void Consultorio::print_servicos() const {
 	ColecaoHibrida<Servico*>::iterator it;
 	for (it = servicos.begin(); it != servicos.end(); it++) {
-		cout << "\t" << (*it)->get_id() << endl;
+		cout << "\t" << (*it)->get_id() << " - " << (*it)->get_data() << " - " << (*it)->get_custo() << endl;
 	}
 }
 
@@ -159,4 +159,9 @@ void Consultorio::print_consultas_paciente(int id_p)
 
 	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << endl;
 	p->print();
+}
+
+int Consultorio::num_paciente() const
+{
+	return pacientes.size();
 }
