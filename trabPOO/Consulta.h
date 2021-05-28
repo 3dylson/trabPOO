@@ -31,6 +31,8 @@ public:
 
 	bool add(const Exame& exame);
 
+	bool remover_exame(int id_e);
+
 	Exame* find_exame(int& id);
 
 	int num_exames() const;

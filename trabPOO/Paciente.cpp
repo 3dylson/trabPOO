@@ -52,6 +52,29 @@ bool Paciente::add(const Consulta& c)
 	return consultas.insert(c);
 }
 
+bool Paciente::remover_consulta(int id_c)
+{
+	Consulta* c = find_consulta(id_c);
+
+	if (c)
+	{
+		if (c->num_exames() > 0)
+		{
+			cout << "Impossivel remover a consulta: " << id_c << " contem exames associadas!" << endl;
+		}
+		else
+		{
+			cout << "Consulta ID: " << id_c << " foi removida!\n";
+			consultas.erase(*c);
+			return true;
+		}
+	}
+	else
+	{
+		cout << "Consulta de id " << id_c << " nao existe.\n";
+	}
+}
+
 int Paciente::num_consulta() const
 {
 	return consultas.size();

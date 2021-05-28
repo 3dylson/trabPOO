@@ -53,6 +53,20 @@ bool Consulta::add(const Exame& exame)
 	return exames.insert(exame);
 }
 
+bool Consulta::remover_exame(int id_e)
+{
+	Exame* e = find_exame(id_e);
+
+	if (e)
+	{
+		cout << "Exame ID: " << id_e << " foi removida!\n";
+		exames.erase(*e);
+		return true;
+	}
+
+	cout << "Exame de id " << id_e << " nao existe.\n";
+}
+
 int Consulta::num_exames() const
 {
 	return exames.size();

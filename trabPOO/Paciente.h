@@ -28,5 +28,7 @@ public:
 
 	bool add(const Consulta& c);
 
+	bool remover_consulta(int id_c);
+
 	int num_consulta() const;
 };
