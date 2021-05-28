@@ -46,6 +46,17 @@ bool Exame::set_consulta(Consulta* ce)
 
 void Exame::print() const
 {
+	cout << "Exame - " << endl;
 	Servico::print();
-	cout << "Tipo: " << this->get_tipo() << endl;
+	cout << "Tipo: ";
+	switch (this->tipo)
+	{
+	case 1:
+		cout << "Analise Clinicas\n";
+		break;
+	case 2:
+		cout << "Imagiologia\n";
+	case 3:
+		cout << "Check up\n";
+	}
 }

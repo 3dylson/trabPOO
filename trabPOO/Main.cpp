@@ -38,14 +38,14 @@ int main()
 	xpto.print_valor_total();
 	cout << "Atribuir consulta a pacientes" << endl;
 	xpto.atribuir_consulta(1, "01/01/01", 5.99, "Lorem ipsum dolor sit amet.", 1);
-	xpto.atribuir_consulta(xpto.num_servico(), "02/01/01", 3.99, "Lorem ipsum dolor sit amet.", 1);
+	xpto.atribuir_consulta(xpto.num_servico() + 1, "02/01/01", 3.99, "Lorem ipsum dolor sit amet.", 1);
 	cout << "Listar servicos: " << endl;
 	xpto.print_servicos();
 	xpto.print_valor_total();
 	cout << "------------------------------\n";
 	cout << "Atribuir exames a consultas: " << endl;
-	xpto.atribuir_exame(1, xpto.num_servico(), "01/01/01", 10.25, Check_up, 1);
-	xpto.atribuir_exame(1, xpto.num_servico(), "02/01/01", 13.25, Analise_Clinicas, 1);
+	xpto.atribuir_exame(1, xpto.num_servico() + 1, "01/01/01", 10.25, Check_up, 1);
+	xpto.atribuir_exame(1, xpto.num_servico() + 1, "02/01/01", 13.25, Analise_Clinicas, 1);
 	xpto.print_valor_total();
 	cout << "------------------------------\n";
 	xpto.print_consultas_paciente(1);

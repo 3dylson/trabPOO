@@ -157,7 +157,7 @@ void Consultorio::print_consultas_paciente(int id_p)
 		cout << "Paciente: " << id_p << "nao existe!" << endl;
 	}
 
-	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << endl;
+	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << "Consultas: " << endl;
 	p->print();
 }
 
