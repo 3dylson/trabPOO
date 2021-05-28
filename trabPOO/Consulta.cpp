@@ -71,10 +71,10 @@ bool Consulta::operator<(const Consulta& c) const
 
 void Consulta::print() const
 {
-	cout << "Consulta -" << endl;
+	cout << "Consulta - ";
 	Servico::print();
-	cout << "Diagonostico: " << this->get_diagonostico() << " Custo: " << get_custo() << endl;
-	cout << "Estao associados " << this->num_exames() << " exames a consulta: " << this->get_id() << endl;
+	cout << " Diagonostico: " << this->get_diagonostico() << " Custo: " << get_custo() << endl;
+	cout << "Estao associados " << this->num_exames() << " exame(s) a consulta: " << this->get_id() << endl;
 	Colecao<Exame>::iterator i;
 	for (i = exames.begin(); i != exames.end(); i++)
 		(i)->print();

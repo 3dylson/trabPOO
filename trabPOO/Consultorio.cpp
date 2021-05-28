@@ -51,13 +51,14 @@ bool Consultorio::atribuir_consulta(int id_c, string data, float custo, string d
 			consulta.set_custo(update_custo);
 			p->add(consulta);
 			Consulta* fc = p->find_consulta(id_c);
-			cout << "Paciente: " << id_p << " Nome: " << p->get_nome() << " registado a consulta: " << id_c << " Custo: " << custo << endl;
+			cout << "Paciente: " << id_p << " Nome: " << p->get_nome() << ", registado a consulta: " << id_c << ", Custo: " << custo << endl;
 			float total = this->get_valor_total_faturado() + custo;
 			this->set_valor_total_faturado(total);
 			return servicos.insert(fc);
 		}
 
 		cout << "A consulta: " << id_c << " ja esta atribuida!" << endl;
+		//return false;
 	}
 
 	cout << "O paciente: " << id_p << " nao existe!" << endl;
@@ -157,7 +158,7 @@ void Consultorio::print_consultas_paciente(int id_p)
 		cout << "Paciente: " << id_p << "nao existe!" << endl;
 	}
 
-	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << "Consultas: " << endl;
+	cout << "Todas consultas associadas ao Paciente: " << p->get_nome() << " ID - " << id_p << ", Consultas: " << endl;
 	p->print();
 }
 

@@ -46,9 +46,9 @@ bool Exame::set_consulta(Consulta* ce)
 
 void Exame::print() const
 {
-	cout << "Exame - " << endl;
+	cout << "Exame - ";
 	Servico::print();
-	cout << "Tipo: ";
+	cout << " Tipo: ";
 	switch (this->tipo)
 	{
 	case 1:
@@ -56,7 +56,9 @@ void Exame::print() const
 		break;
 	case 2:
 		cout << "Imagiologia\n";
+		break;
 	case 3:
 		cout << "Check up\n";
+		break;
 	}
 }
